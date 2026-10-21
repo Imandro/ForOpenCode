@@ -20,6 +20,7 @@ Este repositorio incluye:
 - **136 skills** organizadas en 12 categorías
 - Un **sitio web interactivo** (React + Vite + Tailwind CSS) con buscador, filtros y detalle de cada skill
 - Un **catálogo HTTP** (`index.json`) que OpenCode puede consumir directamente desde GitHub Pages
+- Un **plugin V2 de OpenCode** (`.opencode/plugins/foropencode/`) que expone las skills como herramientas nativas sin servidor externo
 
 ---
 
@@ -497,6 +498,65 @@ ForOpenCode es un proyecto abierto. Las contribuciones son bienvenidas:
 - El campo `name` en el frontmatter debe coincidir con el nombre de la carpeta
 - Incluye un `description` claro y específico en español
 - Usa `metadata.opencode/slash: true` si quieres que sea accesible como comando `/nombre`
+
+---
+
+## 🔌 Plugin V2 de OpenCode
+
+ForOpenCode incluye un **plugin V2 de OpenCode** que expone las 136 skills como herramientas nativas dentro de OpenCode, sin necesidad de un servidor MCP externo.
+
+### Instalación del plugin
+
+Copia la carpeta del plugin dentro de `.opencode/plugins/` de tu proyecto:
+
+```bash
+cp -r ForOpenCode/.opencode/plugins/foropencode .opencode/plugins/
+```
+
+### Configuración en opencode.jsonc
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugins": [
+    {
+      "package": "./.opencode/plugins/foropencode",
+      "options": { "enabled": true }
+    }
+  ],
+  "permissions": [
+    { "action": "skill", "resource": "*", "effect": "allow" },
+    { "action": "tool", "resource": "foropencode_*", "effect": "allow" }
+  ]
+}
+```
+
+### Herramientas expuestas
+
+| Herramienta | Descripción |
+|-------------|-------------|
+| `foropencode_list_skills` | Lista todas las skills (filtrable por categoría) |
+| `foropencode_get_skill` | Obtiene el contenido completo de una skill |
+| `foropencode_search_skills` | Busca skills por texto |
+| `foropencode_categories` | Lista categorías con conteo de skills |
+
+### Ejemplo de uso
+
+Desde el chat de OpenCode:
+
+```
+Lista las skills de categoría frontend de ForOpenCode
+```
+
+```
+Obtén el contenido de la skill code-review de ForOpenCode
+```
+
+```
+Busca skills de "docker" en ForOpenCode
+```
+
+Más detalles en: `.opencode/plugins/foropencode/README.md`
 
 ---
 

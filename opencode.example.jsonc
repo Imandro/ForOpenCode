@@ -1,0 +1,18 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "anthropic/claude-sonnet-4",
+  "skills": [
+    "./.opencode/skills",
+    "https://imandro.github.io/ForOpenCode/"
+  ],
+  "plugins": [
+    {
+      "package": "./.opencode/plugins/foropencode",
+      "options": { "enabled": true }
+    }
+  ],
+  "permissions": [
+    { "action": "skill", "resource": "*", "effect": "allow" },
+    { "action": "tool", "resource": "foropencode_*", "effect": "allow" }
+  ]
+}
