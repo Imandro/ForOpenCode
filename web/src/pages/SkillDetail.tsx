@@ -172,9 +172,9 @@ export default function SkillDetail() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-500 mb-4" />
-        <p className="text-slate-400">Cargando skill...</p>
+      <div className="flex flex-col items-center justify-center h-64 text-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-4 border-[#0ea5e9] border-t-transparent mb-4" />
+        <p className="text-[#64748b] font-medium">Cargando skill...</p>
       </div>
     );
   }
@@ -182,11 +182,11 @@ export default function SkillDetail() {
   if (!skill || !id) {
     return (
       <div className="text-center py-20">
-        <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <FileText className="w-8 h-8 text-red-500" />
+        <div className="w-16 h-16 bg-[#fef2f2] rounded-full flex items-center justify-center mx-auto mb-4">
+          <FileText className="w-8 h-8 text-[#ef4444]" />
         </div>
-        <h3 className="text-xl font-medium text-slate-200 mb-2">Skill no encontrada</h3>
-        <p className="text-slate-500 mb-6">La skill solicitada no existe en el catálogo.</p>
+        <h3 className="text-xl font-bold text-[#1e293b] mb-2">Skill no encontrada</h3>
+        <p className="text-[#64748b] mb-6">La skill solicitada no existe en el catálogo.</p>
         <button
           onClick={() => navigate("/")}
           className="btn-primary"
@@ -207,33 +207,33 @@ export default function SkillDetail() {
       <nav className="mb-8">
         <button
           onClick={() => navigate("/")}
-          className="flex items-center gap-2 text-slate-400 hover:text-brand-400 transition-colors"
+          className="flex items-center gap-2 text-[#64748b] hover:text-[#0ea5e9] transition-colors font-medium"
         >
           <ArrowLeft className="w-4 h-4" /> Volver al catálogo
         </button>
       </nav>
 
-      <div className="bg-dark-900 border border-slate-800 rounded-2xl p-6 mb-8">
+      <div className="bg-white border-2 border-[#e2e8f0] rounded-2xl p-6 mb-8 shadow-soft">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="flex-shrink-0">
-            <div className="w-12 h-12 bg-brand-600 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#0ea5e9] rounded-xl flex items-center justify-center">
               <Code2 className="w-6 h-6 text-white" />
             </div>
           </div>
           <div className="flex-1">
             <div className="flex flex-wrap gap-2 mb-3">
-              <span className="badge border-brand-500/30 bg-brand-500/10 text-brand-400">
+              <span className="badge badge-brand">
                 v{skill.version}
               </span>
-              <span className="badge border-slate-700 bg-slate-800/50 text-slate-400">
+              <span className="badge badge-gray">
                 {catInfo.icon} {catInfo.label}
               </span>
-              <span className="badge border-slate-700 bg-slate-800/50 text-slate-400">
+              <span className="badge badge-gray">
                 {skill.files.length} archivo{skill.files.length > 1 ? "s" : ""}
               </span>
             </div>
-            <h1 className="text-3xl font-bold text-white mb-2">{skill.name}</h1>
-            <p className="text-slate-400 text-lg">{description}</p>
+            <h1 className="text-3xl font-bold text-[#1e293b] mb-2">{skill.name}</h1>
+            <p className="text-[#64748b] text-lg">{description}</p>
           </div>
           <div className="flex flex-col gap-3">
             <button className="btn-primary w-full flex items-center justify-center gap-2">
@@ -247,62 +247,62 @@ export default function SkillDetail() {
       </div>
 
       {/* Installation instructions */}
-      <div className="bg-dark-900 border border-slate-800 rounded-2xl p-6 mb-8">
-        <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-          <Folder className="w-5 h-5 text-brand-500" /> Instalar skill
+      <div className="bg-white border-2 border-[#e2e8f0] rounded-2xl p-6 mb-8 shadow-soft">
+        <h2 className="text-xl font-bold text-[#1e293b] mb-4 flex items-center gap-2">
+          <Folder className="w-5 h-5 text-[#0ea5e9]" /> Instalar skill
         </h2>
         <div className="space-y-4">
           <div>
-            <h3 className="text-sm font-medium text-slate-300 mb-2 uppercase tracking-wider">Proyecto local</h3>
-            <div className="bg-dark-950 border border-slate-800 rounded-lg p-3 font-mono text-sm text-brand-400 overflow-x-auto">
+            <h3 className="text-sm font-bold text-[#64748b] mb-2 uppercase tracking-wider">Proyecto local</h3>
+            <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg p-3 font-mono text-sm text-[#0ea5e9] overflow-x-auto">
               cp -r .opencode/skills/{skill.name} .opencode/skills/
             </div>
-            <p className="text-xs text-slate-500 mt-1">Copia la carpeta dentro de `.opencode/skills/` de tu proyecto.</p>
+            <p className="text-xs text-[#94a3b8] mt-1">Copia la carpeta dentro de `.opencode/skills/` de tu proyecto.</p>
           </div>
           <div>
-            <h3 className="text-sm font-medium text-slate-300 mb-2 uppercase tracking-wider">Uso global</h3>
-            <div className="bg-dark-950 border border-slate-800 rounded-lg p-3 font-mono text-sm text-brand-400 overflow-x-auto">
+            <h3 className="text-sm font-bold text-[#64748b] mb-2 uppercase tracking-wider">Uso global</h3>
+            <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg p-3 font-mono text-sm text-[#0ea5e9] overflow-x-auto">
               cp -r .opencode/skills/{skill.name} ~/.config/opencode/skills/
             </div>
-            <p className="text-xs text-slate-500 mt-1">Disponible para todos tus proyectos.</p>
+            <p className="text-xs text-[#94a3b8] mt-1">Disponible para todos tus proyectos.</p>
           </div>
           <div>
-            <h3 className="text-sm font-medium text-slate-300 mb-2 uppercase tracking-wider">Catálogo HTTP</h3>
-            <div className="bg-dark-950 border border-slate-800 rounded-lg p-3 font-mono text-sm text-brand-400 overflow-x-auto">
+            <h3 className="text-sm font-bold text-[#64748b] mb-2 uppercase tracking-wider">Catálogo HTTP</h3>
+            <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg p-3 font-mono text-sm text-[#0ea5e9] overflow-x-auto">
               https://imandro.github.io/ForOpenCode/
             </div>
-            <p className="text-xs text-slate-500 mt-1">Agrega esta URL al array `skills` de tu `opencode.jsonc`.</p>
+            <p className="text-xs text-[#94a3b8] mt-1">Agrega esta URL al array `skills` de tu `opencode.jsonc`.</p>
           </div>
         </div>
       </div>
 
       {/* Usage */}
-      <div className="bg-dark-900 border border-slate-800 rounded-2xl p-6">
-        <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-          <Code className="w-5 h-5 text-brand-500" /> Cómo usar
+      <div className="bg-white border-2 border-[#e2e8f0] rounded-2xl p-6 shadow-soft">
+        <h2 className="text-xl font-bold text-[#1e293b] mb-4 flex items-center gap-2">
+          <Code className="w-5 h-5 text-[#0ea5e9]" /> Cómo usar
         </h2>
         <div className="space-y-4">
-          <div className="bg-dark-950 border border-slate-800 rounded-lg p-4">
-            <h4 className="text-sm font-medium text-brand-400 mb-2">1. Carga la skill</h4>
-            <p className="text-sm text-slate-400 mb-2">Desde el chat de OpenCode, menciona la skill por su ID:</p>
-            <div className="bg-dark-900 border border-slate-800 rounded p-3 font-mono text-sm text-slate-200 mb-3">
+          <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg p-4">
+            <h4 className="text-sm font-bold text-[#0ea5e9] mb-2">1. Carga la skill</h4>
+            <p className="text-[#64748b] text-sm mb-2">Desde el chat de OpenCode, menciona la skill por su ID:</p>
+            <div className="bg-[#f1f5f9] border border-[#e2e8f0] rounded p-3 font-mono text-sm text-[#111827] mb-3">
               @{skill.name}
             </div>
-            <p className="text-sm text-slate-400">
+            <p className="text-[#64748b] text-sm">
               O el modelo puede cargarla automáticamente con la herramienta `skill` si tiene descripción y no tiene `opencode/autoinvoke: false`.
             </p>
           </div>
-          <div className="bg-dark-950 border border-slate-800 rounded-lg p-4">
-            <h4 className="text-sm font-medium text-brand-400 mb-2">2. Archivos de soporte</h4>
-            <p className="text-sm text-slate-400 mb-2">
+          <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg p-4">
+            <h4 className="text-sm font-bold text-[#0ea5e9] mb-2">2. Archivos de soporte</h4>
+            <p className="text-[#64748b] text-sm mb-2">
               Esta skill incluye {skill.files.length} archivo{skill.files.length > 1 ? "s" : ""}:
             </p>
-            <ul className="text-sm text-slate-500 space-y-1 ml-4 list-disc">
+            <ul className="text-[#64748b] text-sm space-y-1 ml-4 list-disc">
               {skill.files.map((f) => (
                 <li key={f}>{f}</li>
               ))}
             </ul>
-            <p className="text-xs text-slate-600 mt-3 italic">
+            <p className="text-xs text-[#94a3b8] mt-3 italic">
               Los paths relativos dentro de la skill son relativos al directorio que contiene el SKILL.md.
             </p>
           </div>

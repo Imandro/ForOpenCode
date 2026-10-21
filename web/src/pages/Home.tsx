@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Search, ArrowRight, CheckCircle2 } from "lucide-react";
 import SkillCard from "../components/SkillCard";
 import SearchBar from "../components/SearchBar";
 import CategoryFilter from "../components/CategoryFilter";
@@ -10,7 +10,6 @@ interface SkillWithMeta extends Skill {
   category: Category;
 }
 
-// Mapeo de skill-id a descripción (resumida de los archivos SKILL.md)
 const SKILL_DESCRIPTIONS: Record<string, string> = {
   pony_tail: "Estilo de código limpio y ordenado: formato, nombres y presentación",
   better_ui: "Mejora de interfaces de usuario: usabilidad, diseño visual y accesibilidad",
@@ -335,9 +334,9 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-500 mb-4" />
-        <p className="text-slate-400">Cargando skills...</p>
+      <div className="flex flex-col items-center justify-center h-64 text-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-4 border-[#0ea5e9] border-t-transparent mb-4" />
+        <p className="text-[#64748b] font-medium">Cargando skills...</p>
       </div>
     );
   }
@@ -345,26 +344,26 @@ export default function Home() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-white mb-4">
+      <div className="text-center mb-10">
+        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#1e293b] to-[#0ea5e9] mb-4">
           ForOpenCode
         </h1>
-        <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-          Catálogo de <span className="text-brand-400 font-semibold">{skills.length}</span> skills para OpenCode V2.
+        <p className="text-[#64748b] text-lg max-w-2xl mx-auto">
+          Catálogo de <span className="text-[#0ea5e9] font-semibold">{skills.length}</span> skills para OpenCode V2.
           Instala, busca y usa skills reutilizables en tus proyectos.
         </p>
       </div>
 
       {/* Search + Filters */}
-      <div className="bg-dark-900 border border-slate-800 rounded-2xl p-6 shadow-lg">
+      <div className="bg-white border-2 border-[#e2e8f0] rounded-2xl p-6 shadow-soft">
         <div className="grid md:grid-cols-3 gap-4 items-end">
           <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
           <div>
-            <label className="block text-xs text-slate-500 mb-2 uppercase font-medium">Categoría</label>
+            <label className="text-[#64748b] mb-2 uppercase font-bold tracking-wider">Categoría</label>
             <CategoryFilter active={activeCategory} onChange={setActiveCategory} />
           </div>
           <div className="flex items-end">
-            <span className="text-slate-500 text-sm mr-2">{filtered.length} skills</span>
+            <span className="text-[#64748b] text-sm mr-2 font-bold">{filtered.length} skills</span>
           </div>
         </div>
       </div>
@@ -372,12 +371,12 @@ export default function Home() {
       {/* Skills Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {filtered.length === 0 ? (
-          <div className="col-span-full flex flex-col items-center justify-center py-12 text-center">
-            <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-3">
-              <Search className="w-6 h-6 text-slate-500" />
+          <div className="col-span-full flex flex-col items-center justify-center py-16 text-center">
+            <div className="w-16 h-16 bg-[#f1f5f9] rounded-full flex items-center justify-center mb-4">
+              <Search className="w-8 h-8 text-[#94a3b8]" />
             </div>
-            <h3 className="text-lg font-medium text-slate-200 mb-2">No se encontraron skills</h3>
-            <p className="text-slate-500 max-w-xs">Intenta cambiar los términos de búsqueda o la categoría seleccionada.</p>
+            <h3 className="text-lg font-bold text-[#1e293b] mb-2">No se encontraron skills</h3>
+            <p className="text-[#64748b] max-w-xs">Intenta cambiar los términos de búsqueda o la categoría seleccionada.</p>
           </div>
         ) : (
           filtered.map((skill) => {
@@ -397,8 +396,8 @@ export default function Home() {
       </div>
 
       {/* Category legend */}
-      <div className="bg-dark-900/50 border border-slate-800/50 rounded-xl p-4 mt-8">
-        <h3 className="text-sm font-semibold text-slate-300 mb-3 uppercase tracking-wider">Categorías disponibles</h3>
+      <div className="bg-white border-2 border-[#e2e8f0] rounded-xl p-6 mt-8 shadow-soft">
+        <h3 className="text-sm font-bold text-[#64748b] mb-4 uppercase tracking-wider">Categorías disponibles</h3>
         <div className="flex flex-wrap gap-3">
           {Object.entries(CATEGORIES).map(([key, cat]) => {
             const idKey = key as Category;
@@ -406,9 +405,9 @@ export default function Home() {
             return (
               <div
                 key={key}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/50 border border-slate-800 text-xs text-slate-400"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#f8fafc] border border-[#e2e8f0] text-xs text-[#64748b] font-bold"
               >
-                {cat.icon} {cat.label} <span className="text-slate-600">({count})</span>
+                {cat.icon} {cat.label} <span className="text-[#94a3b8]">({count})</span>
               </div>
             );
           })}

@@ -13,17 +13,17 @@ export default function SkillCard({ skill, description, category }: SkillCardPro
     <Link to={`/skill/${skill.name}`} className="skill-card block">
       <div className="flex justify-between items-start mb-3">
         <div className="flex items-center gap-2">
-          <Code2 className="w-4 h-4 text-brand-500" />
-          <span className="font-semibold text-slate-200">{skill.name}</span>
+          <Code2 className="w-4 h-4 text-[#0ea5e9]" />
+          <span className="font-bold text-[#1e293b]">{skill.name}</span>
         </div>
-        <span className="text-xs bg-slate-800 text-slate-400 px-2 py-1 rounded border border-slate-700">
+        <span className="text-xs bg-[#f0f9ff] text-[#0ea5e9] px-2 py-1 rounded border border-[#0ea5e9]/30 font-bold">
           v{skill.version}
         </span>
       </div>
-      <p className="text-slate-400 text-sm mb-4 line-clamp-2">{description}</p>
-      <div className="flex items-center justify-between pt-3 border-t border-slate-800/50">
-        <span className="text-xs text-slate-500 uppercase tracking-wider font-medium">{category}</span>
-        <FileText className="w-4 h-4 text-slate-500 group-hover:text-brand-400 transition-colors" />
+      <p className="text-[#64748b] text-sm mb-4 line-clamp-2">{description}</p>
+      <div className="flex items-center justify-between pt-3 border-t border-[#e2e8f0]">
+        <span className="text-xs text-[#64748b] uppercase tracking-wider font-bold">{category}</span>
+        <FileText className="w-4 h-4 text-[#94a3b8] group-hover:text-[#0ea5e9] transition-colors" />
       </div>
     </Link>
   );

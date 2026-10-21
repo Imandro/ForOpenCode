@@ -9,7 +9,7 @@ function ActiveLink({ to, children, className }: { to: string; children: React.R
     <NavLink
       to={to}
       className={({ isActive }) =>
-        isActive ? `${className} text-brand-500` : `${className} text-slate-400 hover:text-white`}
+        isActive ? `${className} text-[#0ea5e9]` : `${className} text-[#64748b] hover:text-[#111827]`}
       end
     >
       {children}
@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <BrowserRouter basename="/ForOpenCode/">
-      <div className="min-h-screen bg-dark-950 text-slate-100">
+      <div className="min-h-screen bg-[#ffffff] text-[#111827]">
         <Navbar />
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Routes>
@@ -31,17 +31,17 @@ export default function App() {
             <Route path="/install" element={<Install />} />
           </Routes>
         </main>
-        <footer className="border-t border-slate-800 bg-dark-900 py-8 mt-auto">
+        <footer className="footer py-8 mt-auto">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
-              <span className="text-brand-500 font-bold text-lg">ForOpenCode</span>
-              <span className="text-slate-500 text-sm">136 skills para OpenCode V2</span>
+              <span className="text-[#0ea5e9] font-bold text-lg">ForOpenCode</span>
+              <span className="text-[#64748b] text-sm">136 skills para OpenCode V2</span>
             </div>
-            <div className="flex gap-4 text-slate-500 text-sm">
+            <div className="flex gap-4 text-[#64748b] text-sm">
               <span>imandro</span>
               <span>| GitHub Pages</span>
               <span>
-                <a href="https://opencode.ai/v2/docs/skills/" className="text-brand-400 hover:text-brand-300 underline underline-offset-4">Docs OpenCode</a>
+                <a href="https://opencode.ai/v2/docs/skills/" className="text-[#0ea5e9] underline underline-offset-4 hover:text-[#0284c7]">Docs OpenCode</a>
               </span>
             </div>
           </div>

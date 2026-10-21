@@ -10,10 +10,10 @@ export default function CategoryFilter({ active, onChange }: CategoryFilterProps
     <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar custom-scrollbar">
       <button
         onClick={() => onChange(null)}
-        className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+        className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${
           active === null
-            ? "bg-brand-600 text-white shadow-[0_0_20px_rgba(14,165,233,0.3)]"
-            : "bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white border border-slate-700"
+            ? "bg-[#0ea5e9] text-white shadow-[0_0_20px_rgba(14,165,233,0.3)]"
+            : "bg-white text-[#64748b] hover:bg-[#f1f5f9] hover:text-[#111827] border border-[#cbd5e1]"
         }`}
       >
         Todas
@@ -22,10 +22,10 @@ export default function CategoryFilter({ active, onChange }: CategoryFilterProps
         <button
           key={cat.id}
           onClick={() => onChange(cat.id)}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+          className={`px-4 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap ${
             active === cat.id
-              ? "bg-brand-600 text-white shadow-[0_0_20px_rgba(14,165,233,0.3)]"
-              : "bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white border border-slate-700"
+              ? "bg-[#0ea5e9] text-white shadow-[0_0_20px_rgba(14,165,233,0.3)]"
+              : "bg-white text-[#64748b] hover:bg-[#f1f5f9] hover:text-[#111827] border border-[#cbd5e1]"
           }`}
         >
           {cat.icon} {cat.label}
