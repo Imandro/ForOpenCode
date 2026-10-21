@@ -7,12 +7,25 @@
     @apply bg-dark-950 text-slate-100 antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+
+  /* Mejorar legibilidad de textos sobre fondos oscuros */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white;
+  }
+
+  p {
+    @apply text-slate-300;
+  }
+
+  label {
+    @apply text-slate-300;
+  }
 }
 
 @layer components {
   .skill-card {
-    background-color: #0f172a;
-    border: 1px solid #1e293b;
+    background-color: #111827;
+    border: 1px solid #374151;
     border-radius: 0.75rem;
     padding: 1.25rem;
     transition: all 0.2s;
@@ -20,9 +33,10 @@
   }
 
   .skill-card:hover {
-    border-color: rgba(14, 165, 233, 0.5);
-    background-color: rgba(15, 23, 42, 0.5);
-    box-shadow: 0 0 30px rgba(14, 165, 233, 0.15);
+    border-color: rgba(14, 165, 233, 0.6);
+    background-color: #1f2937;
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.2);
+    transform: translateY(-2px);
   }
 
   .btn-primary {
@@ -30,17 +44,18 @@
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.2s;
   }
 
   .btn-primary:hover {
     background-color: #0ea5e9;
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
   }
 
   .btn-outline {
-    border: 1px solid #334155;
-    color: #cbd5e1;
+    border: 1px solid #4b5563;
+    color: #e5e7eb;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-weight: 500;
@@ -49,7 +64,7 @@
 
   .btn-outline:hover {
     border-color: #0ea5e9;
-    background-color: rgba(14, 165, 233, 0.1);
+    background-color: rgba(14, 165, 233, 0.15);
     color: white;
   }
 
@@ -60,13 +75,26 @@
     padding: 0.25rem 0.625rem;
     border-radius: 9999px;
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
     border: 1px solid;
+  }
+
+  .input-dark {
+    @apply bg-dark-900 border border-slate-600 text-slate-100 placeholder-slate-400;
+    @apply focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 outline-none;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-secondary {
+    @apply text-slate-400;
+  }
+
+  .bg-card {
+    @apply bg-dark-900 border border-slate-700;
   }
 }
